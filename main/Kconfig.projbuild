@@ -1,0 +1,109 @@
+menu "NEUI Configuration"
+	menu "Net Config"
+	    config ESP_WIFI_SSID
+	        string "WiFi SSID"
+	        default "setting..."
+	        help
+	            SSID (network name) for the example to connect to.
+	
+	    config ESP_WIFI_PASSWORD
+	        string "WiFi Password"
+	        default "loading...@"
+	        help
+	            WiFi password (WPA or WPA2) for the example to use.
+	
+	    config ESP_MAXIMUM_RETRY
+	        int "Maximum retry"
+	        default 5
+	        help
+	            Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+	
+	    choice SNTP_TIME_SYNC_METHOD
+	        prompt "Time synchronization method"
+	        default SNTP_TIME_SYNC_METHOD_IMMED
+	        help
+	            Time synchronization method.
+	
+	        config SNTP_TIME_SYNC_METHOD_IMMED
+	            bool "update time immediately when received"
+	        config SNTP_TIME_SYNC_METHOD_SMOOTH
+	            bool "update time with smooth method (adjtime)"
+	        config SNTP_TIME_SYNC_METHOD_CUSTOM
+	            bool "custom implementation"
+	    endchoice
+    endmenu
+    
+	menu "IR Config"
+	    choice IR_PROTOCOL
+	        prompt "Infrared Protocol"
+	        default IR_PROTOCOL_NEC
+	        help
+	            Choose the IR protocol used in the example.
+	
+	        config IR_PROTOCOL_NEC
+	            bool "NEC"
+	            help
+	                NEC is a kind of Pulse Distance Protocol.
+	                It uses ASK modulation and pulse distance encoding with a carrier frequency of 38 kHz.
+	
+	        config IR_PROTOCOL_RC5
+	            bool "RC5"
+	            help
+	                The RC5 protocol was introduced by Philips.
+	                It uses ASK modulation and Manchester encoding with carrier frequency fixed at 36 kHz.
+	    endchoice
+	    
+	    config IR_RMT_TX_GPIO
+	        int "RMT TX GPIO"
+	        default 17
+	        help
+	            Set the GPIO number used for transmitting the RMT signal.
+	
+	    config IR_RMT_RX_GPIO
+	        int "RMT RX GPIO"
+	        default 18
+	        help
+	            Set the GPIO number used for receiving the RMT signal.
+	
+	    config RMT_TX_GPIO
+	    int "RMT TX GPIO"
+	    default 19
+	    help
+	        Set the GPIO number used for transmitting the RMT signal.
+	
+	    config STRIP_LED_NUMBER
+	        int "Number of LEDS in a strip"
+	        default 60
+	        help
+	            A single RGB strip contains several LEDs.
+    endmenu
+    
+	menu "I2C Master"
+        config I2C_MASTER_SCL
+            int "SCL GPIO Num"
+            default 6 if IDF_TARGET_ESP32C3
+            default 33 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+            help
+                GPIO number for I2C Master clock line.
+
+        config I2C_MASTER_SDA
+            int "SDA GPIO Num"
+            default 5 if IDF_TARGET_ESP32C3
+            default 32 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+            help
+                GPIO number for I2C Master data line.
+
+        config I2C_MASTER_PORT_NUM
+            int "Port Number"
+            default 1 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+            default 0 if IDF_TARGET_ESP32C3
+            help
+                Port number for I2C Master device.
+
+        config I2C_MASTER_FREQUENCY
+            int "Master Frequency"
+            default 80000
+            help
+                I2C Speed of Master device.
+    endmenu
+endmenu
