@@ -164,7 +164,7 @@ static void https_get_request(esp_tls_cfg_t cfg, char * _city)
                 ESP_LOGI(TAG, "text_night = %s", pTextNight->valuestring);
 
                 int code = atoi(pCodeDay->valuestring);
-                weather_update_to_ldc(i, code);
+                weather_update_to_lcd(i, code);
             }
 
 			cJSON_Delete(root);

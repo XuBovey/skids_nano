@@ -1,6 +1,31 @@
 {
     "files.associations": {
         "https_request_weather.h": "c",
-        "gui_guider.h": "c"
+        "gui_guider.h": "c",
+        "icon_weather_1_sunny.h": "c",
+        "icon_weather_4_cloudy.h": "c",
+        "icon_weather_5_partly_cloudy.h": "c",
+        "icon_weather_10_shower.h": "c",
+        "icon_weather_11_thundershowicon_weather_er.h": "c",
+        "icon_weather_12_thundershower_with_hail.h": "c",
+        "icon_weather_13_light rain.h": "c",
+        "icon_weather_6_partly_cloudy.h": "c",
+        "icon_weather_14_moderate_rain.h": "c",
+        "icon_weather_9_overcast.h": "c",
+        "icon_weather_17_heavy_storm.h": "c",
+        "icon_weather_18_severe_storm.h": "c",
+        "icon_weather_22_light_snow.h": "c",
+        "icon_weather_23_moderate_snow.h": "c",
+        "icon_weather_24_heavy_snow.h": "c",
+        "icon_weather_25_snowstorm.h": "c",
+        "icon_weather_26_dust.h": "c",
+        "icon_weather_27_sand.h": "c",
+        "icon_weather_29_sandstorm.h": "c",
+        "icon_weather_30_foggy.h": "c",
+        "icon_weather_32_windy.h": "c",
+        "icon_weather_33_blustery.h": "c",
+        "icon_weather_31_haze.h": "c",
+        "icon_weather_99_unknown.h": "c",
+        "icon_weather_0_sunny.h": "c"
     }
 }

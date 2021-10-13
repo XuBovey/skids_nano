@@ -199,7 +199,7 @@ void humi_update_to_lcd(float data)
 	set_label_property(guider_ui.main_label_humidity, 0, buf);
 }
 
-void weather_update_to_ldc(int day, char code_day)
+void weather_update_to_lcd(int day, char weather_code)
 {
     lv_obj_t     * obj_icon = NULL;
     
@@ -211,12 +211,10 @@ void weather_update_to_ldc(int day, char code_day)
         return;
     }
 
-    switch(code_day) {
-        case 0:  {lv_img_set_src(obj_icon,  &icon_weather_0 );} break;
-        case 4:  {lv_img_set_src(obj_icon,  &icon_weather_4 );} break;
-        case 9:  {lv_img_set_src(obj_icon,  &icon_weather_9 );} break;
-        default: break;
-    }
+    // if(weather_code < 38)
+    //     lv_img_set_src(obj_icon,  icon_table[weather_code] );
+    // else
+    //     lv_img_set_src(obj_icon,  icon_unknown );
 }
 
 static void lv_tick_task(void *arg) {

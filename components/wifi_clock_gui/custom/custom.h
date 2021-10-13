@@ -16,8 +16,7 @@
 void custom_init(lv_ui *ui);
 void set_label_property(lv_obj_t * target, int id, char * val);
 
-LV_IMG_DECLARE(icon_weather_0);
-LV_IMG_DECLARE(icon_weather_4);
-LV_IMG_DECLARE(icon_weather_9);
+extern const lv_img_dsc_t *icon_table[];
+extern const lv_img_dsc_t *icon_unknown;
 
 #endif /* EVENT_CB_H_ */
