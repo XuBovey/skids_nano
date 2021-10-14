@@ -178,10 +178,6 @@ static void https_get_request(esp_tls_cfg_t cfg, char * _city)
 exit:
 
     esp_tls_conn_delete(tls);
-//    for (int countdown = 10; countdown >= 0; countdown--) {
-//        ESP_LOGI(TAG, "%d...", countdown);
-//        vTaskDelay(1000 / portTICK_PERIOD_MS);
-//    }
 }
 
 static void https_request_task(void *pvparameters)

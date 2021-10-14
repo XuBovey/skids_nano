@@ -166,26 +166,37 @@ void usr_led(void)
 	int freq_index = 0;
 
     while (1) {
-        printf("1. LEDC fade up to duty = %d\n", LEDC_TEST_DUTY);
-        for (ch = 0; ch < LEDC_TEST_CH_NUM-1; ch++) {
-            ledc_set_fade_with_time(ledc_channel[ch].speed_mode,
-					ledc_channel[ch].channel, 0, LEDC_TEST_FADE_TIME);
-			ledc_fade_start(ledc_channel[ch].speed_mode,
-					ledc_channel[ch].channel, LEDC_FADE_NO_WAIT);
-			vTaskDelay(LEDC_TEST_FADE_TIME / portTICK_PERIOD_MS);
+        // printf("1. LEDC fade up to duty = %d\n", LEDC_TEST_DUTY);
+        for (ch = 0; ch < LEDC_TEST_CH_NUM; ch++) {
+            if((LEDC_TEST_CH_NUM -1 ) > ch) {
+                ledc_set_fade_with_time(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, 0, LEDC_TEST_FADE_TIME);
+                ledc_fade_start(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, LEDC_FADE_NO_WAIT);
+                vTaskDelay(LEDC_TEST_FADE_TIME / portTICK_PERIOD_MS);
 
-            ledc_set_fade_with_time(ledc_channel[ch].speed_mode,
-                    ledc_channel[ch].channel, LEDC_TEST_DUTY, LEDC_TEST_FADE_TIME);
-            ledc_fade_start(ledc_channel[ch].speed_mode,
-                    ledc_channel[ch].channel, LEDC_FADE_NO_WAIT);
-            vTaskDelay(LEDC_TEST_FADE_TIME / portTICK_PERIOD_MS);
-
-            if(freq_index < sizeof(freq_hz_table)/sizeof(int)) {
-				ledc_set_freq(LEDC_LS_MODE, LEDC_LS_TIMER, freq_hz_table[freq_index]);
-				freq_index += 1;
-			}else {
-				freq_index = 0;
-			}
+                ledc_set_fade_with_time(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, LEDC_TEST_DUTY, LEDC_TEST_FADE_TIME);
+                ledc_fade_start(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, LEDC_FADE_NO_WAIT);
+                vTaskDelay(LEDC_TEST_FADE_TIME / portTICK_PERIOD_MS);
+            }
+            if((LEDC_TEST_CH_NUM -1 ) == ch) {       
+#if 0
+                if(freq_index < sizeof(freq_hz_table)/sizeof(int)) {
+                    ledc_set_freq(LEDC_LS_MODE, LEDC_LS_TIMER, freq_hz_table[freq_index]);
+                    freq_index += 1;
+                }else {
+                    freq_index = 0;
+                }
+#else
+                ledc_set_fade_with_time(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, 0, LEDC_TEST_FADE_TIME);
+                ledc_fade_start(ledc_channel[ch].speed_mode,
+                        ledc_channel[ch].channel, LEDC_FADE_NO_WAIT);
+                // vTaskDelay(LEDC_TEST_FADE_TIME / portTICK_PERIOD_MS);
+#endif
+            }
         }
     }
 }
