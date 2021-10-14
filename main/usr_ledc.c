@@ -55,7 +55,7 @@
 #define LEDC_LS_CH3_CHANNEL    LEDC_CHANNEL_3
 
 #define LEDC_TEST_CH_NUM       (4)
-#define LEDC_TEST_DUTY         (8192)
+#define LEDC_TEST_DUTY         (2048)//(8192)
 #define LEDC_TEST_FADE_TIME    (1000)
 
 void usr_led(void)
