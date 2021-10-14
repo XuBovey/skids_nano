@@ -127,7 +127,7 @@ void aip1638_usr_buf_write(uint8_t offset, uint8_t seg_font)
 void aip1638_update(spi_device_handle_t spi, uint8_t *data_buf)
 {
     uint8_t data_cmd = 0x40;
-    uint8_t disp_cmd = 0x8F;
+    uint8_t disp_cmd = 0x88;
 
     spi_aip1638_write(spi, &data_cmd, 1);
     spi_aip1638_write(spi, data_buf, 17);

@@ -132,17 +132,17 @@ void led_strip_update_clock(led_strip_t *strip)
 		led_strip_hsv2rgb(hue, 100, 0, &red, &green, &blue);
 
 		if((j+1)%5 == 0) {
-			led_strip_hsv2rgb(60, 50, 1, &red, &green, &blue);
+			led_strip_hsv2rgb(60, 5, 1, &red, &green, &blue);
 		}
 
 		if((j+1)%60 == sec_num) {
-			led_strip_hsv2rgb(0, 100, 5, &red, &green, &blue);
+			led_strip_hsv2rgb(0, 100, 2, &red, &green, &blue);
 		}
 		if((j+1)%60 == min_num) {
-			led_strip_hsv2rgb(120, 100, 5, &red, &green, &blue);
+			led_strip_hsv2rgb(120, 100, 2, &red, &green, &blue);
 		}
 		if((j+1)%60 == hour_num) {
-			led_strip_hsv2rgb(240, 100, 5, &red, &green, &blue);
+			led_strip_hsv2rgb(240, 100, 2, &red, &green, &blue);
 		}
 		// Write RGB values to strip driver
 		ESP_ERROR_CHECK(strip->set_pixel(strip, j, red, green, blue));
