@@ -22,10 +22,7 @@
 #include "https_request_weather.h"
 #include "smart_config.h"
 #include "usr_led_strip.h"
-#include "usr_aip1638.h"
-#include "aht21.h"
 #include "usr_lvgl.h"
-#include "usr_ledc.h"
 
 #define TAG "main"
 
@@ -56,11 +53,6 @@ void disp_update(void)
 	strftime(strftime_buf, sizeof(strftime_buf), "%Y-%m-%d\n%I:%M:%S", &timeinfo);
 
 	time_update_to_lcd(strftime_buf);
-
-	float temp, humi;
-	read_aht21_data(&temp, &humi);
-	temp_update_to_lcd(temp);
-	humi_update_to_lcd(humi);
 }
 
 void usr_task1( void * pvParameters )
@@ -105,11 +97,6 @@ void app_main(void)
 	// not use
 	smart_config();
 #endif
-	// 7segs led demo
-	aip1638_demo();
-
-	// 
-	aht21_start();
 
 	// task for sntp get time from internet
 	xTaskCreate(usr_sntp_task, "usr_sntp_task", 4096, NULL, 5, NULL);
@@ -119,6 +106,4 @@ void app_main(void)
 	xTaskCreate(led_strip_task, "led_strip_task", 4096, NULL, 5, NULL);
 	// task for update time temp him data to lcd
 	xTaskCreate(usr_task1, "usr_task1", 4096, NULL, 5, NULL);
-	// led blink demo
-	usr_led();
 }

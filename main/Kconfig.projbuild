@@ -1,4 +1,4 @@
-menu "NEUI Configuration"
+menu "skids nano Configuration"
 	menu "Net Config"
 	    config ESP_WIFI_SSID
 	        string "WiFi SSID"
@@ -33,47 +33,16 @@ menu "NEUI Configuration"
 	    endchoice
     endmenu
     
-	menu "IR Config"
-	    choice IR_PROTOCOL
-	        prompt "Infrared Protocol"
-	        default IR_PROTOCOL_NEC
-	        help
-	            Choose the IR protocol used in the example.
-	
-	        config IR_PROTOCOL_NEC
-	            bool "NEC"
-	            help
-	                NEC is a kind of Pulse Distance Protocol.
-	                It uses ASK modulation and pulse distance encoding with a carrier frequency of 38 kHz.
-	
-	        config IR_PROTOCOL_RC5
-	            bool "RC5"
-	            help
-	                The RC5 protocol was introduced by Philips.
-	                It uses ASK modulation and Manchester encoding with carrier frequency fixed at 36 kHz.
-	    endchoice
-	    
-	    config IR_RMT_TX_GPIO
-	        int "RMT TX GPIO"
-	        default 17
-	        help
-	            Set the GPIO number used for transmitting the RMT signal.
-	
-	    config IR_RMT_RX_GPIO
-	        int "RMT RX GPIO"
-	        default 18
-	        help
-	            Set the GPIO number used for receiving the RMT signal.
-	
+	menu "RMT Config"
 	    config RMT_TX_GPIO
 	    int "RMT TX GPIO"
-	    default 19
+	    default 27
 	    help
 	        Set the GPIO number used for transmitting the RMT signal.
 	
 	    config STRIP_LED_NUMBER
 	        int "Number of LEDS in a strip"
-	        default 60
+	        default 1
 	        help
 	            A single RGB strip contains several LEDs.
     endmenu

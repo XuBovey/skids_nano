@@ -95,58 +95,20 @@ void led_strip_update_init(led_strip_t *strip)
 
 }
 
-void led_strip_update_clock(led_strip_t *strip)
+void led_strip_update(led_strip_t *strip)
 {
     uint32_t red = 0;
     uint32_t green = 0;
     uint32_t blue = 0;
     uint16_t hue = 0;
 
-    uint16_t sec_num, min_num, hour_num = 0;
-
-    // 1. 定义变量-当前时间，实际上是一个长整形变量
-	// #define	_TIME_T_ long
-	// typedef	_TIME_T_ time_t;
-	time_t now;
-
-	// 3. 定义年月日，时分秒格式时间变量
-	struct tm timeinfo;
-
-	// 4. 获取当前时间，得到从1970-1-1到限制的秒计数
-	time(&now);
-
-	// Set timezone to China Standard Time
-	setenv("TZ", "CST-8", 1);
-	tzset();
-
-	// 5. 根据秒计数得到当前的时间（年月日-时分秒）
-	localtime_r(&now, &timeinfo);
-
-	sec_num 	= timeinfo.tm_sec;
-	min_num 	= timeinfo.tm_min;
-	hour_num 	= (uint16_t)((timeinfo.tm_hour%12)*5 + timeinfo.tm_min/12);
-
-	for (int j = 0; j < CONFIG_STRIP_LED_NUMBER; j ++) {
-		// Build RGB values
-		hue = j * 360 / CONFIG_STRIP_LED_NUMBER;
-		led_strip_hsv2rgb(hue, 100, 0, &red, &green, &blue);
-
-		if((j+1)%5 == 0) {
-			led_strip_hsv2rgb(60, 5, 1, &red, &green, &blue);
-		}
-
-		if((j+1)%60 == sec_num) {
-			led_strip_hsv2rgb(0, 100, 2, &red, &green, &blue);
-		}
-		if((j+1)%60 == min_num) {
-			led_strip_hsv2rgb(120, 100, 2, &red, &green, &blue);
-		}
-		if((j+1)%60 == hour_num) {
-			led_strip_hsv2rgb(240, 100, 2, &red, &green, &blue);
-		}
-		// Write RGB values to strip driver
-		ESP_ERROR_CHECK(strip->set_pixel(strip, j, red, green, blue));
-	}
+    for (int j = 0; j < CONFIG_STRIP_LED_NUMBER; j ++) {
+        // Build RGB values
+        hue = j * 360 / CONFIG_STRIP_LED_NUMBER;
+        led_strip_hsv2rgb(hue, 100, 10, &red, &green, &blue);
+        // Write RGB values to strip driver
+        ESP_ERROR_CHECK(strip->set_pixel(strip, j, red, green, blue));
+    }
 	// Flush RGB values to LEDs
 	ESP_ERROR_CHECK(strip->refresh(strip, 100));
 
@@ -177,7 +139,7 @@ void led_strip_task( void * pvParameters )
 	ESP_LOGI(TAG, "LED Rainbow Chase Start");
 
 	while (true) {
-		led_strip_update_clock(strip);
+		led_strip_update(strip);
 
 		vTaskDelay(pdMS_TO_TICKS(EXAMPLE_CHASE_SPEED_MS));
 	}
