@@ -16,6 +16,7 @@ typedef struct
 {
 	lv_obj_t *main;
 	lv_obj_t *main_back;
+	lv_obj_t *main_img_bak;
 	lv_obj_t *main_img_day1;
 	lv_obj_t *main_label_time;
 	lv_obj_t *main_lmeter_temp;

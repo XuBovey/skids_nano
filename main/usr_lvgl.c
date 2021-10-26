@@ -32,6 +32,8 @@
 #include "custom.h"
 #include "gui_guider.h"
 
+#include "lv_port_fs_template.h"
+
 lv_ui guider_ui;
 
 /*********************
@@ -125,7 +127,8 @@ static void guiTask(void *pvParameter) {
     lv_indev_drv_register(&indev_drv);
 #endif
 
-//    lv_port_indev_init();
+    // lv_port_indev_init();
+    lv_port_fs_init();
 
     /* Create and start a periodic timer interrupt to call lv_tick_inc */
     const esp_timer_create_args_t periodic_timer_args = {

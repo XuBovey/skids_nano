@@ -3,6 +3,6 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := skids2_wifi_clock
+PROJECT_NAME := skids_nano
 
 include $(IDF_PATH)/make/project.mk

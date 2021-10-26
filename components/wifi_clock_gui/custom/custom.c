@@ -119,6 +119,7 @@ void custom_init(lv_ui *ui)
     lv_style_set_border_opa(ui->main_lmeter_humidity, LV_STATE_DEFAULT, 0);
 
     lv_img_set_src(ui->main_img_day1, icon_table[0] );
+    lv_img_set_src(ui->main_img_bak, "S:dir/icon_img_bak_cat.bin" );
 }
 
 #define LABEL_PROPERTY_TEXT 0
@@ -132,9 +133,9 @@ void set_label_property(lv_obj_t * target, int id, char * val)
 void set_weather_data(lv_obj_t * target, int weather_code)
 {
     if(weather_code < 38)
-        lv_img_set_src(target,  icon_table[weather_code] );
+        lv_img_set_src(target,  icon_table[weather_code]);
     else
-        lv_img_set_src(target,  icon_unknown );
+        lv_img_set_src(target,  icon_unknown);
 }
 
 

@@ -103,6 +103,44 @@
 					"default_style": false
 				},
 				{
+					"name": "img_bak",
+					"type": "img",
+					"left": 0,
+					"top": 0,
+					"is_move_animation": false,
+					"desX": 0,
+					"desY": 0,
+					"path_type": "linear",
+					"duration": 100,
+					"width": 240,
+					"height": 240,
+					"img_path": "",
+					"rotate": 0,
+					"x": 35,
+					"y": 35,
+					"color_format": "true-color-alpha",
+					"part": "LV_IMG_PART_MAIN",
+					"state": "LV_STATE_DEFAULT",
+					"disable": false,
+					"image_recolor": "#ffffff",
+					"image_recolor_opa": 0,
+					"image_opa": 100,
+					"style": [
+						{
+							"part": "LV_IMG_PART_MAIN",
+							"state": "LV_STATE_DEFAULT",
+							"disable": false,
+							"image_recolor": "#ffffff",
+							"image_recolor_opa": 0,
+							"image_opa": 100
+						}
+					],
+					"parentName": "back",
+					"parentId": "fl9be6c6",
+					"id": "bbnj6mym",
+					"default_style": false
+				},
+				{
 					"name": "img_day1",
 					"type": "img",
 					"left": 70,
@@ -1227,6 +1265,42 @@
 						"fit": "LV_FIT_NONE",
 						"click": "false",
 						"child": [
+							{
+								"name": "main_img_bak",
+								"type": "img",
+								"pos": [
+									0,
+									0
+								],
+								"size": [
+									240,
+									240
+								],
+								"is_move_animation": false,
+								"path_type": "linear",
+								"move_animation": {
+									"des_pos": [
+										0,
+										0
+									],
+									"duration": 100
+								},
+								"default_style": false,
+								"img_path": "",
+								"color_format": "true-color-alpha",
+								"rotate": 0,
+								"pivot": "35,35",
+								"style": [
+									{
+										"part": "LV_IMG_PART_MAIN",
+										"state": "LV_STATE_DEFAULT",
+										"disable": false,
+										"image_recolor": "#ffffff",
+										"image_recolor_opa": 0,
+										"image_opa": 100
+									}
+								]
+							},
 							{
 								"name": "main_img_day1",
 								"type": "img",

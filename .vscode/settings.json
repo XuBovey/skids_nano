@@ -26,6 +26,9 @@
         "icon_weather_33_blustery.h": "c",
         "icon_weather_31_haze.h": "c",
         "icon_weather_99_unknown.h": "c",
-        "icon_weather_0_sunny.h": "c"
+        "icon_weather_0_sunny.h": "c",
+        "lv_port_fs_template.h": "c",
+        "lv_fs_if.h": "c",
+        "lvgl.h": "c"
     }
 }

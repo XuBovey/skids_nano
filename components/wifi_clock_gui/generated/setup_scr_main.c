@@ -40,6 +40,21 @@ void setup_scr_main(lv_ui *ui){
 	lv_obj_set_size(ui->main_back, 240, 240);
 	lv_obj_set_click(ui->main_back, false);
 
+	//Write codes main_img_bak
+	ui->main_img_bak = lv_img_create(ui->main_back, NULL);
+
+	//Write style LV_IMG_PART_MAIN for main_img_bak
+	static lv_style_t style_main_img_bak_main;
+	lv_style_init(&style_main_img_bak_main);
+
+	//Write style state: LV_STATE_DEFAULT for style_main_img_bak_main
+	lv_style_set_image_recolor(&style_main_img_bak_main, LV_STATE_DEFAULT, lv_color_make(0xff, 0xff, 0xff));
+	lv_style_set_image_recolor_opa(&style_main_img_bak_main, LV_STATE_DEFAULT, 0);
+	lv_style_set_image_opa(&style_main_img_bak_main, LV_STATE_DEFAULT, 100);
+	lv_obj_add_style(ui->main_img_bak, LV_IMG_PART_MAIN, &style_main_img_bak_main);
+	lv_obj_set_pos(ui->main_img_bak, 0, 0);
+	lv_obj_set_size(ui->main_img_bak, 240, 240);
+
 	//Write codes main_img_day1
 	ui->main_img_day1 = lv_img_create(ui->main_back, NULL);
 
